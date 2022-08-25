@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.inputmethodservice.Keyboard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,10 +20,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
+                val player1 = Player(listOf(
+                    Card(CardType.Club,2),
+                    Card(CardType.Heart,3),
+                    Card(CardType.Spade,4),
+                ))
+                val player2 = Player(listOf(
+                    Card(CardType.Diamond, 6),
+                    Card(CardType.Heart, 2),
+                    Card(CardType.Club, 5),
+                ))
+
                 Column() {
                     Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                         for (i in 1..7) {
-                            Card(R.drawable.king_of_clubs)
+                            Card(R.drawable.backcard)
                         }
                     }
                     Row(
@@ -36,8 +48,8 @@ class MainActivity : ComponentActivity() {
                         Box(modifier = Modifier.weight(1f))
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
-                        for (i in 1..7) {
-                            Card(R.drawable.of_hearts_4)
+                        player2.cards.forEach { card: Card ->
+                            Card(resId = card.getDrawable())
                         }
                     }
                 }
