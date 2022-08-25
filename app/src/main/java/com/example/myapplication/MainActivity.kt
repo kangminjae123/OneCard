@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
                 Column() {
                     Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                         for (i in 1..7) {
-                            Card()
+                            Card(R.drawable.king_of_clubs)
                         }
                     }
                     Row(
@@ -29,14 +30,14 @@ class MainActivity : ComponentActivity() {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Box(modifier = Modifier.weight(1f))
-                        Card(modifier = Modifier.size(80.dp))
+                        Card(R.drawable.ace_of_spades2, modifier = Modifier.size(80.dp))
                         Box(modifier = Modifier.weight(1f))
-                        Card(modifier = Modifier.size(80.dp))
+                        Card(R.drawable.backcard ,modifier = Modifier.size(80.dp))
                         Box(modifier = Modifier.weight(1f))
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                         for (i in 1..7) {
-                            Card()
+                            Card(R.drawable.of_hearts_4)
                         }
                     }
                 }
@@ -47,10 +48,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Card(
-    modifier: Modifier = Modifier.size(width = 55.dp, height = 80.dp)
+    @DrawableRes resId: Int
+    ,modifier: Modifier = Modifier.size(width = 55.dp, height = 80.dp)
 ) {
     Image(
-        painter = painterResource(id = R.drawable.backcard),
+        painter = painterResource(id = resId),
         contentDescription = null,
         modifier = modifier
 
