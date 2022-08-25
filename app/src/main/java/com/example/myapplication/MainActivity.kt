@@ -50,7 +50,7 @@ fun Card(
     modifier: Modifier = Modifier.size(width = 55.dp, height = 80.dp)
 ) {
     Image(
-        painter = painterResource(id = R.drawable.img),
+        painter = painterResource(id = R.drawable.backcard),
         contentDescription = null,
         modifier = modifier
 
